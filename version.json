@@ -1,8 +1,8 @@
 {
- "version": "1.10",
- "date": "2026-10-06",
+ "version": "1.11",
+ "date": "2026-10-21",
  "download": "https://github.com/Nitinsinghal1/algotrade-app/releases/latest/download/AlgoTrade-windows.zip",
- "size_mb": 73.4,
- "sha256": "7e45df4eb8dd6fcaa39be8245d0c686eb349765d1e17348a9b5eb0d9b253a576",
+ "size_mb": 74.0,
+ "sha256": "47f41b1da93dfc0acc39ba3463c9e1670fcc985e5c711a96b5a952ff62f1f979",
  "site": "https://nitinsinghal1.github.io/algotrade-app/"
 }
