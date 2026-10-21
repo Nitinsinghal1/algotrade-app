@@ -1,0 +1,181 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AlgoTrade News</title>
+<meta name="description" content="Indian market news from RBI, SEBI, the exchanges and business media, with short summaries and an event calendar. Information, not investment advice.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+[hidden]{display:none!important}
+:root {
+  --bg: #f2f5f9;          /* cool chart paper */
+  --panel: #ffffff;
+  --panel-2: #e9eef5;
+  --ink: #0f1722;
+  --muted: #536072;
+  --line: #d3dbe6;
+  --accent: #115ac2;      /* the app's own blue */
+  --on-accent: #ffffff;
+  --amber: #a85a05;       /* the breakout range lines, and nothing else */
+  --up: #12733a;
+  --down: #c22a21;
+  --grid: rgba(15, 23, 34, .055);
+  --shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 12px 32px rgba(16, 24, 40, .10);
+  --shot-light: block; --shot-dark: none;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0f15; --panel: #141a22; --panel-2: #1b232d; --ink: #e8eef5; --muted: #9ba8b7; --line: #28323f;
+    --accent: #6ea8ff; --on-accent: #0b1220; --amber: #f5a524; --up: #3fb950; --down: #ff7b72;
+    --grid: rgba(232, 238, 245, .05); --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 16px 40px rgba(0, 0, 0, .45);
+    --shot-light: none; --shot-dark: block; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b0f15; --panel: #141a22; --panel-2: #1b232d; --ink: #e8eef5; --muted: #9ba8b7; --line: #28323f;
+  --accent: #6ea8ff; --on-accent: #0b1220; --amber: #f5a524; --up: #3fb950; --down: #ff7b72;
+  --grid: rgba(232, 238, 245, .05); --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 16px 40px rgba(0, 0, 0, .45);
+  --shot-light: none; --shot-dark: block; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--body);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px; background-position: -1px -1px;
+}
+a { color: var(--accent); }
+.wrap { max-width: 1120px; margin-inline: auto; padding-inline: 20px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+h1 { font-size: clamp(36px, 6vw, 62px); line-height: 1.04; font-weight: 800; }
+h2 { font-size: clamp(26px, 3.6vw, 38px); line-height: 1.12; font-weight: 700; }
+h3 { font-size: 19px; line-height: 1.25; font-weight: 700; }
+p { margin: 0; }
+.lede { font-size: clamp(17px, 2vw, 20px); color: var(--muted); max-width: 56ch; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+/* header */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: color-mix(in srgb, var(--bg) 82%, transparent); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; gap: 18px; padding-block: 12px; flex-wrap: wrap; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font: 800 19px/1 var(--display); color: var(--ink); text-decoration: none; }
+.mark { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; background: var(--accent); color: var(--on-accent); font: 800 12px/1 var(--display); }
+.nav { display: flex; gap: 4px 18px; flex-wrap: wrap; margin-left: auto; align-items: center; }
+.nav a { color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500; padding: 4px 0; }
+.nav a:hover { color: var(--ink); }
+main { padding-block: 28px 48px; display: grid; gap: 18px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; box-shadow: var(--shadow); min-width: 0; }
+.grid2 { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+.muted { color: var(--muted); }
+.note { color: var(--amber); font-weight: 600; margin-top: 8px; }
+ul.brief { margin: 8px 0 0; padding-left: 20px; }
+table.cal { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 15px; }
+table.cal td { padding: 6px 4px; border-top: 1px solid var(--line); vertical-align: top; }
+table.cal td:first-child { font-family: var(--mono); white-space: nowrap; }
+.filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 10px; }
+.filters button { font: 500 13px/1 var(--body); padding: 6px 11px; border-radius: 999px; border: 1px solid var(--line);
+                  background: var(--panel-2); color: var(--ink); cursor: pointer; }
+.filters button.on { border-color: var(--accent); color: var(--accent); }
+.news-item { padding: 12px 0; border-top: 1px solid var(--line); }
+.news-title { font-weight: 600; overflow-wrap: anywhere; }
+.news-item.official .news-title::before { content: "OFFICIAL"; font: 700 10px/1 var(--mono); color: var(--accent); margin-right: 8px; letter-spacing: .06em; }
+.news-summary { margin-top: 4px; }
+.meta { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.up { color: var(--up); } .down { color: var(--down); }
+.tag { border: 1px solid var(--line); border-radius: 999px; padding: 0 8px; }
+footer { border-top: 1px solid var(--line); padding-block: 24px 36px; color: var(--muted); font-size: 14px; }
+</style>
+</head><body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="mark">AT</span>AlgoTrade</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="index.html">Home</a>
+      <a href="news.html" aria-current="page">News</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <section class="card">
+    <h1 style="font-size:clamp(30px,5vw,44px)">Market news</h1>
+    <p class="muted">From RBI, SEBI, NSE, BSE and the Finance Ministry. Short summaries are written by AI from each
+      notice; open the link for the original. <b>Information, not investment advice.</b></p>
+    <p id="newsWhen" class="muted mono"></p>
+    <p id="newsOld" class="note" hidden>This page has not been updated for over two hours.</p>
+    <p id="newsAiOff" class="muted" hidden>Summaries unavailable — headlines only.</p>
+  </section>
+  <div class="grid2">
+    <section class="card"><h3>Today in five points</h3><ul id="newsBrief" class="brief"></ul></section>
+    <section class="card"><h3>Next two weeks</h3><table id="newsCal" class="cal"></table></section>
+  </div>
+  <section class="card">
+    <h3>All news</h3>
+    <div id="newsFilters" class="filters"></div>
+    <div id="newsList"><p class="muted">Loading…</p></div>
+  </section>
+</main>
+<footer><div class="wrap">Information, not investment advice. Trading in futures and options carries a high risk of loss.
+  Headlines belong to their publishers; follow the links for the full stories.</div></footer>
+<script>
+(function () {
+  "use strict";
+  var esc = function (v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); };
+  var now = function () { return typeof window.__now === "number" ? window.__now : Date.now(); };
+  var $ = function (s) { return document.querySelector(s); };
+  var DATA = null, TAG = null;
+  var IMPACT = { up: "▲ up", down: "▼ down", unclear: "• unclear" };
+
+  function marketHours(ms) {
+    var d = new Date(ms + 5.5 * 3600 * 1000), m = d.getUTCHours() * 60 + d.getUTCMinutes(), wd = d.getUTCDay();
+    return wd >= 1 && wd <= 5 && m >= 9 * 60 + 15 && m <= 15 * 60 + 30;
+  }
+  function ago(iso) {
+    var t = Date.parse(iso || ""); if (!isFinite(t)) return "";
+    var m = Math.max(0, Math.round((now() - t) / 60000));
+    return m < 60 ? m + " min ago" : m < 2880 ? Math.round(m / 60) + " h ago" : String(iso).slice(0, 10);
+  }
+  function render() {
+    var d = DATA || {};
+    var items = (d.items || []).filter(function (i) { return i && i.public === true; });
+    var t = Date.parse(d.generated_at || "");
+    $("#newsWhen").textContent = isFinite(t) ? "Updated " + ago(d.generated_at) : "";
+    $("#newsOld").hidden = !(isFinite(t) && marketHours(now()) && now() - t > 2 * 3600 * 1000);
+    $("#newsAiOff").hidden = d.ai !== false;
+    $("#newsBrief").innerHTML = (d.brief || []).slice(0, 5).map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("")
+      || '<li class="muted">No brief yet.</li>';
+    $("#newsCal").innerHTML = (d.calendar || []).map(function (e) {
+      return "<tr><td>" + esc(e.date) + "</td><td class=\"muted\">" + esc(e.time) + "</td><td>" + esc(e.title) +
+        (e.confirmed ? "" : ' <span class="muted">(unconfirmed)</span>') + "</td></tr>"; }).join("")
+      || '<tr><td class="muted">Nothing in the next two weeks.</td></tr>';
+    var tags = [];
+    items.forEach(function (i) { (i.tags || []).forEach(function (g) { if (tags.indexOf(g) < 0) tags.push(g); }); });
+    tags.sort();
+    $("#newsFilters").innerHTML = tags.map(function (g) {
+      return '<button type="button" data-tag="' + esc(g) + '"' + (TAG === g ? ' class="on"' : "") + ">" + esc(g) + "</button>"; }).join("");
+    Array.prototype.forEach.call(document.querySelectorAll("#newsFilters button"), function (b) {
+      b.onclick = function () { TAG = TAG === b.dataset.tag ? null : b.dataset.tag; render(); }; });
+    var shown = items.filter(function (i) { return !TAG || (i.tags || []).indexOf(TAG) >= 0; });
+    $("#newsList").innerHTML = shown.map(function (i) {
+      var safe = /^https?:\/\//i.test(i.link || "");
+      var title = safe ? '<a href="' + esc(i.link) + '" target="_blank" rel="noopener noreferrer">' + esc(i.title) + "</a>" : esc(i.title);
+      return '<div class="news-item' + (i.tier === "official" ? " official" : "") + '"><div class="news-title">' + title + "</div>" +
+        (i.summary ? '<p class="news-summary">' + esc(i.summary) + (i.why ? ' <span class="muted">— ' + esc(i.why) + "</span>" : "") + "</p>" : "") +
+        '<div class="meta"><span>' + esc(i.source) + "</span><span>" + esc(ago(i.published)) + "</span>" +
+        (i.ai ? '<span class="' + esc(i.impact) + '">' + esc(IMPACT[i.impact] || "") + "</span>" : "") +
+        (i.tags || []).map(function (g) { return '<span class="tag">' + esc(g) + "</span>"; }).join("") + "</div></div>";
+    }).join("") || '<p class="muted">No news right now.</p>';
+  }
+  fetch("news.json", { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function (d) { DATA = d; render(); })
+    .catch(function () { $("#newsList").innerHTML = '<p class="muted">News could not be loaded right now.</p>'; });
+})();
+</script>
+</body></html>
